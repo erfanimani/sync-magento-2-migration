@@ -88,6 +88,11 @@ class CustomerImport
                 $customer['store_id'] = $websiteMap[$customer['store']] ?? 0;
                 $customer['group_id'] = $groupMap[$customer['group']] ?? 1;
                 $customer['gender'] = $genderOptions[$customer['gender'] ?: self::NOT_SPECIFIED] ?? null;
+                if(!empty($customer['dob'])) {
+                    $customer['dob'] = $customer['dob'];
+                } else {
+                    $customer['dob'] = null;
+                }
 
                 $insert->withAssocRow(
                     $customer

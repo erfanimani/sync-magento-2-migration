@@ -103,6 +103,6 @@ class Import
     {
         $this->customerImport->importCustomers($this->csvFactory->createReader('customer.csv'));
         $this->customerImport->importCustomerAddresses($this->csvFactory->createReader('customer_address.csv'));
-        $this->customerImport->importCustomerBalance($this->csvFactory->createReader('customer_balance.csv'));
+       // $this->customerImport->importCustomerBalance($this->csvFactory->createReader('customer_balance.csv'));
     }
 }

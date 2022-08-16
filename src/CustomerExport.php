@@ -49,8 +49,11 @@ class CustomerExport
         $writer = $this->csvFactory->createWriter($fileName, $this->customerFeed::CUSTOMER_ADDRESS_FIELDS);
 
         foreach ($this->customerFeed->fetchCustomerAddresses($this->conditionGenerator) as $row) {
-            $writer->write($row);
+            $allValues = $row;
+            $allValues['street'] = preg_replace("/[\n]/"," \\\\n ",$row['street']);
+            $writer->write($allValues);
         }
+
     }
 
     public function exportCustomerBalance(string $fileName)
