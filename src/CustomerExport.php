@@ -51,6 +51,34 @@ class CustomerExport
         foreach ($this->customerFeed->fetchCustomerAddresses($this->conditionGenerator) as $row) {
             $allValues = $row;
             $allValues['street'] = preg_replace("/[\n]/"," \\\\n ",$row['street']);
+
+            switch (trim(str_replace('.', '', strtoupper((string)$row['region'])))) {
+                case 'NSW':
+                    $allValues['region'] = 'New South Wales';
+                    break;
+                case 'VIC':
+                    $allValues['region'] = 'Victoria';
+                    break;
+                case 'QLD':
+                    $allValues['region'] = 'Queensland';
+                    break;
+                case 'SA':
+                    $allValues['region'] = 'South Australia';
+                    break;
+                case 'WA':
+                    $allValues['region'] = 'Western Australia';
+                    break;
+                case 'TAS':
+                    $allValues['region'] = 'Tasmania';
+                    break;
+                case 'NT':
+                    $allValues['region'] = 'Northern Territory';
+                    break;
+                case 'ACT':
+                    $allValues['region'] = 'Australian Capital Territory';
+                    break;
+            }
+
             $writer->write($allValues);
         }
 
