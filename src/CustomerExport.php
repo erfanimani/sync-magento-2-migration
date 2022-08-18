@@ -50,7 +50,7 @@ class CustomerExport
 
         foreach ($this->customerFeed->fetchCustomerAddresses($this->conditionGenerator) as $row) {
             $allValues = $row;
-            $allValues['street'] = preg_replace("/[\n]/"," \\\\n ",$row['street']);
+            $allValues['street'] = preg_replace("/[\n]/"," - ",$row['street']);
 
             switch (trim(str_replace('.', '', strtoupper((string)$row['region'])))) {
                 case 'NSW':
