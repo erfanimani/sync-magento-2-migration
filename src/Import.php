@@ -87,7 +87,7 @@ class Import
         $this->productImport->importStock($this->csvFactory->createReader('stock.csv'));
         $this->productImport->importGallery($this->csvFactory->createReader('product_image.csv'));
         $this->productImport->importGalleryValues($this->csvFactory->createReader('product_image_label.csv'));
-        $this->productImport->importProductUrls($this->csvFactory->createReader('product_urls.csv'));
+        // $this->productImport->importProductUrls($this->csvFactory->createReader('product_urls.csv'));
         $this->productImport->importProductConfigurableAttributes(
             $this->csvFactory->createReader('product_configurable_attribute.csv')
         );
